@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import client.enums.ExpoNetworkPaths;
 import client.network.ExpoPushNClient;
 import client.types.ExpoNMessage;
+import client.types.ExpoNPush;
 import client.types.ExpoNResponse;
 
 public class ExpoNClient extends ExpoPushNClient {
@@ -20,6 +21,14 @@ public class ExpoNClient extends ExpoPushNClient {
 
     public ExpoNResponse sendExpoPushSync(ExpoNMessage body) throws IOException, InterruptedException {
         return super.sendSync(ExpoNetworkPaths.SEND, body.toJson());
+    }
+
+    public CompletableFuture<ExpoNResponse> sendExpoReceiptAsync(ExpoNPush body) {
+        return super.sendAsync(ExpoNetworkPaths.RECEIPT, body.toJson());
+    }
+
+    public ExpoNResponse sendExpoReceiptSync(ExpoNPush body) throws IOException, InterruptedException {
+        return super.sendSync(ExpoNetworkPaths.RECEIPT, body.toJson());
     }
 
     /*
