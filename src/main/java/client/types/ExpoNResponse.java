@@ -61,4 +61,7 @@ public class ExpoNResponse {
         return new Gson().toJson(this);
     }
 
+    public static ExpoNResponse builder() {
+        return new ExpoNResponse();
+    }
 }

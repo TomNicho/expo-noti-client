@@ -1,6 +1,7 @@
 package client;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 import client.enums.ExpoNetworkPaths;
 import client.network.ExpoPushNClient;
@@ -13,7 +14,7 @@ public class ExpoNClient extends ExpoPushNClient {
         super();
     }
 
-    public ExpoNResponse sendExpoPushAsync(ExpoNMessage body) {
+    public CompletableFuture<ExpoNResponse> sendExpoPushAsync(ExpoNMessage body) {
         return super.sendAsync(ExpoNetworkPaths.SEND, body.toJson());
     }
 

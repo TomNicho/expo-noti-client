@@ -2,6 +2,7 @@ package client.types;
 
 import java.util.Objects;
 
+import client.builders.ExpoNReceiptBuilder;
 import client.enums.ExpoResponseStatus;
 
 public class ExpoNReceipt {
@@ -51,26 +52,6 @@ public class ExpoNReceipt {
         this.details = details;
     }
 
-    public ExpoNReceipt status(ExpoResponseStatus status) {
-        setStatus(status);
-        return this;
-    }
-
-    public ExpoNReceipt id(String id) {
-        setId(id);
-        return this;
-    }
-
-    public ExpoNReceipt messsage(String messsage) {
-        setMesssage(messsage);
-        return this;
-    }
-
-    public ExpoNReceipt details(Object details) {
-        setDetails(details);
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -97,4 +78,7 @@ public class ExpoNReceipt {
             "}";
     }
 
+    public static ExpoNReceiptBuilder builder() {
+        return new ExpoNReceiptBuilder();
+    }
 }
