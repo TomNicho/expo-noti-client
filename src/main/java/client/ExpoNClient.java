@@ -1,5 +1,7 @@
 package client;
 
+import java.io.IOException;
+
 import client.enums.ExpoNetworkPaths;
 import client.network.ExpoPushNClient;
 import client.types.ExpoNResponse;
@@ -14,7 +16,7 @@ public class ExpoNClient extends ExpoPushNClient {
         return super.sendAsync(ExpoNetworkPaths.SEND, body);
     }
 
-    public ExpoNResponse sendExpoPushSync(Object body) {
+    public ExpoNResponse sendExpoPushSync(Object body) throws IOException, InterruptedException {
         return super.sendSync(ExpoNetworkPaths.SEND, body);
     }
 
