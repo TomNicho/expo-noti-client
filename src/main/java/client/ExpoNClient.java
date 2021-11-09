@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import client.enums.ExpoNetworkPaths;
 import client.network.ExpoPushNClient;
+import client.types.ExpoNMessage;
 import client.types.ExpoNResponse;
 
 public class ExpoNClient extends ExpoPushNClient {
@@ -12,12 +13,12 @@ public class ExpoNClient extends ExpoPushNClient {
         super();
     }
 
-    public ExpoNResponse sendExpoPushAsync(Object body) {
-        return super.sendAsync(ExpoNetworkPaths.SEND, body);
+    public ExpoNResponse sendExpoPushAsync(ExpoNMessage body) {
+        return super.sendAsync(ExpoNetworkPaths.SEND, body.toJson());
     }
 
-    public ExpoNResponse sendExpoPushSync(Object body) throws IOException, InterruptedException {
-        return super.sendSync(ExpoNetworkPaths.SEND, body);
+    public ExpoNResponse sendExpoPushSync(ExpoNMessage body) throws IOException, InterruptedException {
+        return super.sendSync(ExpoNetworkPaths.SEND, body.toJson());
     }
 
     /*

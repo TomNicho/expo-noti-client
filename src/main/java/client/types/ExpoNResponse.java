@@ -3,23 +3,25 @@ package client.types;
 import java.util.List;
 import java.util.Objects;
 
+import com.google.gson.Gson;
+
 public class ExpoNResponse {
-    private List<ExpoNResponse> data;
+    private List<ExpoNReceipt> data;
     private List<ExpoNError> errors;
 
     public ExpoNResponse() {
     }
 
-    public ExpoNResponse(List<ExpoNResponse> data, List<ExpoNError> errors) {
+    public ExpoNResponse(List<ExpoNReceipt> data, List<ExpoNError> errors) {
         this.data = data;
         this.errors = errors;
     }
 
-    public List<ExpoNResponse> getData() {
+    public List<ExpoNReceipt> getData() {
         return this.data;
     }
 
-    public void setData(List<ExpoNResponse> data) {
+    public void setData(List<ExpoNReceipt> data) {
         this.data = data;
     }
 
@@ -29,16 +31,6 @@ public class ExpoNResponse {
 
     public void setErrors(List<ExpoNError> errors) {
         this.errors = errors;
-    }
-
-    public ExpoNResponse data(List<ExpoNResponse> data) {
-        setData(data);
-        return this;
-    }
-
-    public ExpoNResponse errors(List<ExpoNError> errors) {
-        setErrors(errors);
-        return this;
     }
 
     @Override
@@ -63,6 +55,10 @@ public class ExpoNResponse {
             " data='" + getData() + "'" +
             ", errors='" + getErrors() + "'" +
             "}";
+    }
+
+    public String toJson() {
+        return new Gson().toJson(this);
     }
 
 }

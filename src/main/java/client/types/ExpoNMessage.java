@@ -3,6 +3,9 @@ package client.types;
 import java.util.List;
 import java.util.Objects;
 
+import com.google.gson.Gson;
+
+import client.builders.ExpoNMessageBuilder;
 import client.enums.MessagePriority;
 import client.enums.MessageSound;
 
@@ -177,5 +180,13 @@ public class ExpoNMessage {
             ", priority='" + priority + "'" +
             ", sound='" + sound + "'" +
         "}";
+    }
+
+    public String toJson() {
+        return new Gson().toJson(this); 
+    }
+
+    public static ExpoNMessageBuilder builder() {
+        return new ExpoNMessageBuilder();
     }
 }

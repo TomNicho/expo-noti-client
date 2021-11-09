@@ -17,7 +17,7 @@ import client.enums.ExpoNetworkPaths;
 import client.types.ExpoNResponse;
 
 public class ExpoPushNClient {
-    public ExpoNResponse sendAsync(ExpoNetworkPaths path, Object body) {
+    protected ExpoNResponse sendAsync(ExpoNetworkPaths path, String body) {
         HttpClient client = HttpClient.newBuilder()
             .version(Version.HTTP_2)
             .followRedirects(Redirect.NEVER)
@@ -28,7 +28,7 @@ public class ExpoPushNClient {
             .timeout(Duration.ofSeconds(30))
             .header("Content-Type", "application/json")
             .uri(URI.create(ExpoNetworkDetails.getFullURL(path)))
-            .POST(BodyPublishers.noBody())
+            .POST(BodyPublishers.ofString(body))
         .build();
 
         HttpResponse<String> response = client.sendAsync(request, BodyHandlers.ofString()).join();
@@ -38,7 +38,7 @@ public class ExpoPushNClient {
         return respObj;
     }
 
-    public ExpoNResponse sendSync(ExpoNetworkPaths path, Object body) throws IOException, InterruptedException {
+    protected ExpoNResponse sendSync(ExpoNetworkPaths path, String body) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder()
             .version(Version.HTTP_2)
             .followRedirects(Redirect.NEVER)
@@ -49,7 +49,7 @@ public class ExpoPushNClient {
             .timeout(Duration.ofSeconds(30))
             .header("Content-Type", "application/json")
             .uri(URI.create(ExpoNetworkDetails.getFullURL(path)))
-            .POST(BodyPublishers.noBody())
+            .POST(BodyPublishers.ofString(body))
         .build();
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
