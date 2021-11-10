@@ -2,8 +2,6 @@ package client.types;
 
 import java.util.Objects;
 
-import client.builders.ExpoNErrorBuilder;
-
 public class ExpoNError {
     private Integer code;
     private String message;
@@ -54,9 +52,5 @@ public class ExpoNError {
             " code='" + getCode() + "'" +
             ", message='" + getMessage() + "'" +
             "}";
-    }
-
-    public static ExpoNErrorBuilder builder() {
-        return new ExpoNErrorBuilder();
     }
 }

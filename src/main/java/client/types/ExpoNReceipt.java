@@ -2,7 +2,6 @@ package client.types;
 
 import java.util.Objects;
 
-import client.builders.ExpoNReceiptBuilder;
 import client.enums.ExpoResponseStatus;
 
 public class ExpoNReceipt {
@@ -76,9 +75,5 @@ public class ExpoNReceipt {
             ", messsage='" + getMesssage() + "'" +
             ", details='" + getDetails() + "'" +
             "}";
-    }
-
-    public static ExpoNReceiptBuilder builder() {
-        return new ExpoNReceiptBuilder();
     }
 }

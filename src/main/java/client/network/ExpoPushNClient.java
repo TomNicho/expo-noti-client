@@ -12,13 +12,10 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
-import com.google.gson.Gson;
-
 import client.enums.ExpoNetworkPaths;
-import client.types.ExpoNResponse;
 
 public class ExpoPushNClient {
-    protected CompletableFuture<ExpoNResponse> sendAsync(ExpoNetworkPaths path, String body) {
+    protected CompletableFuture<HttpResponse<String>> sendAsync(ExpoNetworkPaths path, String body) {
         HttpClient client = HttpClient.newBuilder()
             .version(Version.HTTP_2)
             .followRedirects(Redirect.NEVER)
@@ -32,13 +29,10 @@ public class ExpoPushNClient {
             .POST(BodyPublishers.ofString(body))
         .build();
 
-        return client.sendAsync(request, BodyHandlers.ofString()).thenApply(resp -> {
-            Gson gson = new Gson();
-            return gson.fromJson(resp.body(), ExpoNResponse.class);
-        });
+        return client.sendAsync(request, BodyHandlers.ofString());
     }
 
-    protected ExpoNResponse sendSync(ExpoNetworkPaths path, String body) throws IOException, InterruptedException {
+    protected HttpResponse<String> sendSync(ExpoNetworkPaths path, String body) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder()
             .version(Version.HTTP_2)
             .followRedirects(Redirect.NEVER)
@@ -52,10 +46,6 @@ public class ExpoPushNClient {
             .POST(BodyPublishers.ofString(body))
         .build();
 
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        Gson gson = new Gson();
-        ExpoNResponse respObj = gson.fromJson(response.body(), ExpoNResponse.class);
-
-        return respObj;
+        return client.send(request, BodyHandlers.ofString());
     }
 }

@@ -5,23 +5,23 @@ import java.util.Objects;
 
 import com.google.gson.Gson;
 
-public class ExpoNResponse {
-    private List<ExpoNReceipt> data;
+public class ExpoNResponse<T> {
+    private T data;
     private List<ExpoNError> errors;
 
     public ExpoNResponse() {
     }
 
-    public ExpoNResponse(List<ExpoNReceipt> data, List<ExpoNError> errors) {
+    public ExpoNResponse(T data, List<ExpoNError> errors) {
         this.data = data;
         this.errors = errors;
     }
 
-    public List<ExpoNReceipt> getData() {
+    public T getData() {
         return this.data;
     }
 
-    public void setData(List<ExpoNReceipt> data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -31,17 +31,6 @@ public class ExpoNResponse {
 
     public void setErrors(List<ExpoNError> errors) {
         this.errors = errors;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof ExpoNResponse)) {
-            return false;
-        }
-        ExpoNResponse expoNResponse = (ExpoNResponse) o;
-        return Objects.equals(data, expoNResponse.data) && Objects.equals(errors, expoNResponse.errors);
     }
 
     @Override
@@ -59,9 +48,5 @@ public class ExpoNResponse {
 
     public String toJson() {
         return new Gson().toJson(this);
-    }
-
-    public static ExpoNResponse builder() {
-        return new ExpoNResponse();
     }
 }
