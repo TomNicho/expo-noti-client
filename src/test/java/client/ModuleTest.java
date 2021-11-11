@@ -20,7 +20,7 @@ public class ModuleTest
         ExpoNClient client = new ExpoNClient();
 
         if (ExpoNClient.isExpoPushToken(testToken)) {
-            List<String> tokens = new ArrayList<>();
+            List<String> tokens = new ArrayList<String>();
             tokens.add(testToken);
 
             ExpoNMessage message = ExpoNMessage.builder()
@@ -47,7 +47,7 @@ public class ModuleTest
         ExpoNClient client = new ExpoNClient();
 
         if (ExpoNClient.isExpoPushToken(testToken)) {
-            List<String> tokens = new ArrayList<>();
+            List<String> tokens = new ArrayList<String>();
             tokens.add(testToken);
 
             ExpoNMessage message = ExpoNMessage.builder()
