@@ -1,4 +1,5 @@
 # expo-noti-client 
+[![CodeQL](https://github.com/TomNicho/expo-noti-client/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/TomNicho/expo-noti-client/actions/workflows/codeql-analysis.yml) 
 [![Maven Central](https://img.shields.io/maven-central/v/uk.co.tnix.exponoticlient/expo-noti-client.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22uk.co.tnix.exponoticlient%22%20AND%20a:%22expo-noti-client%22)
 
 Basic HTTP/2 client to interact with the expo notification service. Works both asynchronously and synchronously using the Java `HTTPClient` class. Allows sending custom mobile notifications through **Expo's Push API** using a device id gathered from your own mobile device, which works both for IOS and Android devices.
