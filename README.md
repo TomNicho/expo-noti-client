@@ -10,7 +10,7 @@ Implementation to interact with Expo’s ticket service is not implemented yet. 
 This Java module is synced with the central maven repository and can be installed in the following ways.
 
 ### Maven
-```
+```xml
 <dependency>
   <groupId>uk.co.tnix.exponoticlient</groupId>
   <artifactId>expo-noti-client</artifactId>
@@ -19,7 +19,7 @@ This Java module is synced with the central maven repository and can be installe
 ```
 
 ### Gradle
-```
+```groovy
 implementation 'uk.co.tnix.exponoticlient:expo-noti-client:1.0.0'
 ```
 
