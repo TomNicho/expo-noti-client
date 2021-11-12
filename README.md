@@ -28,8 +28,18 @@ Visit https://search.maven.org/artifact/uk.co.tnix.exponoticlient/expo-noti-clie
 
 ## Example Usage
 Function to return a `ExpoNTicket` object which contains the success or failure of sending the notification to an example user, defined in the `String testToken` parameter.
-```
-public ExpoNTicket PushExampleAsync(String testToken) {
+```java
+package examples;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import client.ExpoNClient;
+import client.types.ExpoNMessage;
+import client.types.ExpoNTicket;
+
+public class ExampleNotiTest {
+    public ExpoNTicket PushExampleAsync(String testToken) {
 
         //Creating new client object to send the information to Expo's push API
         ExpoNClient client = new ExpoNClient();
@@ -51,13 +61,15 @@ public ExpoNTicket PushExampleAsync(String testToken) {
             
                 //Send the message data, this is using async but joined straight away
                 ExpoNTicket resp = client.sendExpoPushAsync(message).join();
-                return resp;
-                
+                return resp;   
             } catch (Exception e) {
-                return null;
+                System.out.println(e);
             }
         }
+
+        return null;
     }
+}
 ```
 ## Documentation
 Full documentation of this module is not currently available but is being developed.
